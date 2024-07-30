@@ -11,16 +11,7 @@ class Config:
 
 
 app = Flask(__name__)
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
-babel = Babel(app, locale_selector='en', timezoneselector='UTC')
-
-
-@app.route("/")
-@app.route("/index")
-def index():
-    """Entry to the root."""
-    return render_template('1-index.html')
-
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+babel = Babel(app)
